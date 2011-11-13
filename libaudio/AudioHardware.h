@@ -166,7 +166,7 @@ public:
     virtual status_t    setVoiceVolume(float volume);
     virtual status_t    setMasterVolume(float volume);
 
-virtual status_t    setMode(int mode);
+    virtual status_t    setMode(int mode);
 
     // mic mute
     virtual status_t    setMicMute(bool state);
