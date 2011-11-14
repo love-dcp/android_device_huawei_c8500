@@ -1,5 +1,3 @@
-# Copyright 2006 The Android Open Source Project
-
 ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),c8500)
 
 LOCAL_PATH := $(call my-dir)
@@ -26,4 +24,4 @@ LOCAL_LDLIBS += -lpthread
 
 include $(BUILD_SHARED_LIBRARY)
 
-endif # build for c8500
+endif
