@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2011 The Android Open Source Project
+## Copyright (C) 2011 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -64,6 +63,7 @@ BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 TARGET_USES_OLD_LIBSENSORS_HAL := true
 BOARD_VENDOR_USE_AKMD := akm8973
 
+# Lights
 TARGET_PROVIDES_LIBLIGHTS := true
 
 # Recovery
@@ -73,7 +73,6 @@ BOARD_LDPI_RECOVERY := true
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
 TARGET_PROVIDES_LIBAUDIO := true
-
 
 # RIL
 TARGET_PROVIDES_LIBRIL := true
@@ -91,10 +90,11 @@ TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 # WiFI
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WIFI_DRIVER_FW_STA_PATH := "/system/etc/firmware/fw_bcm4319.bin"
+WIFI_DRIVER_FW_AP_PATH := "/system/etc/firmware/fw_bcm4319_apsta.bin"
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/firmware/fw_bcm4319.bin nvram_path=/system/etc/firmware/nvram.txt"
 WIFI_DRIVER_MODULE_NAME := "dhd"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/bcm4319.ko"
-WPA_SUPPLICANT_VERSION := VER_0_5_X
+WPA_SUPPLICANT_VERSION := VER_0_6_X
 
 # Kernel
 BOARD_KERNEL_BASE := 0x00200000
