@@ -23,8 +23,6 @@
 
 #define LOG_TAG "UsbController"
 #include <cutils/log.h>
-#include <cutils/properties.h>
-#include <string.h>
 
 #include "UsbController.h"
 
@@ -46,26 +44,26 @@ int UsbController::stopRNDIS() {
 }
 
 int UsbController::enableRNDIS(bool enable) {
-	char ums;
-	int fdums = open("/sys/devices/platform/msm_hsusb/gadget/lun0/file", O_RDWR);
-	read(fdums, &ums, 1);
-	close(fdums);
-	if (ums == '/')
-		return 0;
+    char ums;
+    int fdums = open("/sys/devices/platform/usb_mass_storage/lun0/file", O_RDWR);
+    read(fdums, &ums, 1);
+    close(fdums);
+    if (ums == '/')
+        return 0;
 
-	char value[20];
-	int fd = open("/sys/module/g_android/parameters/product_id", O_RDWR);
-	int count = snprintf(value, sizeof(value), "%s\n", (enable ? "1039" : "1038"));
-	write(fd, value, count);
-	close(fd);
-	return 0;
+    char value[20];
+    int fd = open("/sys/devices/platform/msm_hsusb/composition", O_RDWR);
+    int count = snprintf(value, sizeof(value), "%s\n", (enable ? "2d61" : "2d66"));
+    write(fd, value, count);
+    close(fd);
+    return 0;
 }
 
 bool UsbController::isRNDISStarted() {
-    char value[5];
-    int fd = open("/sys/module/g_android/parameters/product_id", O_RDONLY);
-    read(fd, &value, 5);
+    char value[30];
+    int fd = open("/sys/devices/platform/msm_hsusb/composition", O_RDWR);
+    read(fd, &value, 30);
     close(fd);
-    return (!strncmp(value,"1039",4) ? true : false);
+    return (value[28] == '1' ? true : false);
 }
 
